@@ -3,7 +3,7 @@ kind: Config
 build:
   tagPolicy:
     envTemplate:
-      template: "{{.JENKINS_X_DOCKER_REGISTRY_SERVICE_HOST}}:{{.JENKINS_X_DOCKER_REGISTRY_SERVICE_PORT}}/roie9876/demo:{{.VERSION}}"
+      template: "jenkins-x-docker-registry/roie9876/demo:{{.VERSION}}"
   artifacts:
   - imageName: changeme
     workspace: .
@@ -17,7 +17,7 @@ profiles:
   build:
     tagPolicy:
       envTemplate:
-        template: "{{.JENKINS_X_DOCKER_REGISTRY_SERVICE_HOST}}:{{.JENKINS_X_DOCKER_REGISTRY_SERVICE_PORT}}/roie9876/demo:{{.DIGEST_HEX}}"
+        template: "jenkins-x-docker-registry/roie9876/demo:{{.DIGEST_HEX}}"
     artifacts:
     - docker: {}
     local: {}
@@ -27,5 +27,5 @@ profiles:
       - name: demo
         chartPath: charts/demo
         setValueTemplates:
-          image.repository: "{{.JENKINS_X_DOCKER_REGISTRY_SERVICE_HOST}}:{{.JENKINS_X_DOCKER_REGISTRY_SERVICE_PORT}}/roie9876/demo"
+          image.repository: "jenkins-x-docker-registry/roie9876/demo"
           image.tag: "{{.TAG}}"
